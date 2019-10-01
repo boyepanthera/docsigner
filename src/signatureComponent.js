@@ -1,22 +1,16 @@
-import React, {useRef, useState} from 'react';
-import './App.css';
+import React, {useRef, useState}  from 'react';
 import SignatureCanvas from 'react-signature-canvas';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  const signatureCanv =  useRef({});
-  const clear = ()=> signatureCanv.current.clear();
-  let [savedSignature, setSignature] = useState('');
-  const save = ()=> 
+const signatureComponent = () => {
+    const signatureCanv =  useRef({});
+    const clear = ()=> signatureCanv.current.clear();
+    let [savedSignature, setSignature] = useState('');
+    const save = ()=> 
     {
       setSignature(savedSignature = signatureCanv.current.getTrimmedCanvas().toDataURL())
       console.log(savedSignature);
-    }  
-  ;
-  return (
-    <div className="container">
-      <div className='text-center'>Draw your signature here!</div>
-      {
+    };
+    return (
         <>
         <SignatureCanvas 
         ref = {signatureCanv}
@@ -30,9 +24,7 @@ function App() {
       </div>
       <img src= {savedSignature} className='mx-auto' alt='Your saved signature'/> 
       </>
-      }
-    </div>
-  );
+    )
 }
 
-export default App;
+export default signatureComponent;

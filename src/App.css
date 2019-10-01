@@ -1,5 +1,6 @@
 .Canvas {
     width:80%;
     height:200px;
-    align-self: center
+    align-self: center;
+    max-width:500px;
 }
